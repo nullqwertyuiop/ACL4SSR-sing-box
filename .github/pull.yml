@@ -1,0 +1,5 @@
+version: "1"
+rules:
+  - base: master
+    upstream: ACL4SSR:master
+    mergeMethod: hardreset

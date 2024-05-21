@@ -1,0 +1,49 @@
+name: Parse rule-sets
+
+on:
+  push:
+    branches: [ "rm", "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Setup sing-box
+        run: |
+          sudo curl -fsSL https://sing-box.app/gpg.key -o /etc/apt/keyrings/sagernet.asc
+          sudo chmod a+r /etc/apt/keyrings/sagernet.asc
+          echo "deb [arch=`dpkg --print-architecture` signed-by=/etc/apt/keyrings/sagernet.asc] https://deb.sagernet.org/ * *" | \
+            sudo tee /etc/apt/sources.list.d/sagernet.list > /dev/null
+          sudo apt-get update
+          sudo apt-get install sing-box
+
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.0
+        with:
+          python-version: 3.12
+
+      - name: Setup Deps
+        run: pip install PyYAML
+
+      - name: Setup Git
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Parse ACL4SSR rule-sets
+        run: curl -sSL https://raw.githubusercontent.com/nullqwertyuiop/ACL4SSR-sing-box/rm/.github/workflows/parse.py | python -
+
+      - name: Push to parsed
+        run: |
+          git checkout -B parsed
+          git add *
+          git commit -a -m ":package: Parse rule-sets"
+          git push --force origin parsed
