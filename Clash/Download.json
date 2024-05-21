@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "process_name": [
+        "aria2c.exe",
+        "fdm.exe",
+        "Folx.exe",
+        "NetTransport.exe",
+        "Thunder.exe",
+        "Transmission.exe",
+        "uTorrent.exe",
+        "WebTorrent.exe",
+        "WebTorrent Helper.exe",
+        "qbittorrent.exe",
+        "DownloadService.exe",
+        "Weiyun.exe",
+        "baidunetdisk.exe"
+      ],
+      "domain_suffix": [
+        "smtp"
+      ],
+      "domain_keyword": [
+        "aria2"
+      ],
+      "domain_regex": [
+        "(Subject|HELO|SMTP)",
+        "(api|ps|sv|offnavi|newvector|ulog.imap|newloc)(.map|).(baidu|n.shifen).com",
+        "(.+.|^)(360|so|qihoo|360safe|qhimg|360totalsecurity|yunpan).(cn|com)",
+        "(.+.)?(torrent|announce.php?passkey=|tracker|BitTorrent|bt_key|ed2k|find_node|get_peers|info_hash|magnet:|peer_id=|xunlei)(..+)?",
+        "(.?)(xunlei|sandai|Thunder|XLLiveUD)(.)",
+        "(.+\\.|^)(360|so)\\.(cn|com)"
+      ]
+    }
+  ]
+}

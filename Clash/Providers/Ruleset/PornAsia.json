@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain_suffix": [
+        "jable.tv",
+        "missav.com",
+        "netflav.com",
+        "javdb.com"
+      ]
+    }
+  ]
+}

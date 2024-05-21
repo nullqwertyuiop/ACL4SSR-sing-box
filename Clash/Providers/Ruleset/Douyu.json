@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain_suffix": [
+        "douyu.com",
+        "douyu.tv",
+        "douyuscdn.com",
+        "douyutv.com"
+      ]
+    }
+  ]
+}

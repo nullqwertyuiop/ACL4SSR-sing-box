@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain_suffix": [
+        "zoom.us",
+        "zpns.zoom.us",
+        "cloud.zoom.us",
+        "zoom.us",
+        "zoomgov.com"
+      ]
+    }
+  ]
+}
